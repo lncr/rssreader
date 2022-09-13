@@ -9,7 +9,7 @@ with open('requirements.txt') as f:
 
 setup(
     name = "rss-reader-bektur",
-    version = "2.1.5",
+    version = "2.1.6",
     author = "Bektur Soltobaev",
     author_email = "bektur_soltobaev@epam.com",
     description = ("RSS reader for final task in Python educational course"),
@@ -24,7 +24,7 @@ setup(
         "License :: OSI Approved :: BSD License",
     ],
     entry_points = {
-        'console_scripts': ['rss-reader=rss_reader.rss_reader:run'],
+        'console_scripts': ['rss-reader=rss_reader.executor:run'],
     },
     install_requires=required,
 )
