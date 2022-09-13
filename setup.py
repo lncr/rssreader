@@ -8,11 +8,11 @@ try:
     with open('requirements.txt') as f:
         required = f.read().splitlines()
 except FileNotFoundError:
-    required = ['feedparser==6.0.10', ]
+    required = ['feedparser==6.0.10', 'fpdf==1.7.2']
 
 setup(
     name = "rss-reader-bektur",
-    version = "4.0.0",
+    version = "4.1.2",
     author = "Bektur Soltobaev",
     author_email = "bektur_soltobaev@epam.com",
     description = ("RSS reader for final task in Python educational course"),

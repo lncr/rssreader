@@ -7,6 +7,7 @@ from collections import OrderedDict
 from .constants import CURRENT_VERSION
 from .verbosity import method_verbosity, func_verbosity
 from .cache import DBHandler
+from .file_generator import FileGenerator
 
 
 def create_args():
@@ -24,7 +25,11 @@ def create_args():
     parser.add_argument("--verbose", help="Increase output verbosity", action='store_true')
     parser.add_argument("--version", help="Show current version", action='store_true')
     parser.add_argument("--json", help="Set output format to JSON", action='store_true')
-    parser.add_argument("--date", type=str, nargs='?', help="Show cached entry for given date in %Y%m%d format")
+    parser.add_argument("--date", type=str, nargs='?', help="Show cached entry for given date")
+    parser.add_argument('--to-pdf', type=str, nargs='?', default='',
+                        help='Receives path where PDF file should be created and writes results in it')
+    parser.add_argument('--to-html', type=str, nargs='?', default='',
+                        help='Receives path where HTML file should be created and writes results in it')
 
     args = parser.parse_args()
 
@@ -141,4 +146,8 @@ def run():
             feed_gen = FeedGenerator(args.source, verbose=args.verbose, limit=args.limit)
             data = feed_gen.collect_data()
 
-        print(output_data(data, args.json))
+        if any([args.to_html, args.to_pdf]):
+            file_generator = FileGenerator(args.to_pdf, args.to_html, data)
+            file_generator.generate()
+        else:
+            print(output_data(data, args.json))
