@@ -9,7 +9,7 @@ with open('requirements.txt') as f:
 
 setup(
     name = "rss-reader-bektur",
-    version = "3.1.0",
+    version = "3.1.1",
     author = "Bektur Soltobaev",
     author_email = "bektur_soltobaev@epam.com",
     description = ("RSS reader for final task in Python educational course"),

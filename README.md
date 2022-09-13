@@ -1,4 +1,4 @@
-**bold**CLI utility for reading RSS news from given URL
+**bold**CLI utility for reading RSS news from given URL**bold**
 
 
 Provides rss-reader command that receives single positional argument "source",
