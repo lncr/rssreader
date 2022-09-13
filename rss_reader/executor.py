@@ -99,7 +99,7 @@ class FeedGenerator:
         '''
         raw_data = self.__get_data()
         structured_data = self.__structure_data(raw_data)
-        db_handler = DBHandler()
+        db_handler = DBHandler(self.verbose)
         db_handler.write(structured_data['Entries'], structured_data['Feed'])
         return structured_data
 
@@ -135,7 +135,7 @@ def run():
     else:
 
         if args.date:
-            db_handler = DBHandler()
+            db_handler = DBHandler(verbose=args.verbose)
             data = db_handler.read_from_db(args.date)
         else:
             feed_gen = FeedGenerator(args.source, verbose=args.verbose, limit=args.limit)

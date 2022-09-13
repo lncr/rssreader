@@ -1,6 +1,8 @@
 import sqlite3
 import datetime
 
+from .verbosity import method_verbosity
+
 
 def adapt_date_iso(val):
     """Adapt datetime.date to ISO 8601 date."""
@@ -13,16 +15,19 @@ def convert_date(val):
 
 class DBHandler:
 
-    def __init__(self):
+    def __init__(self, verbose=False):
         self.con = sqlite3.connect('rss.db')
         self.cursor = self.con.cursor()
+        self.verbose = verbose
 
+    @method_verbosity
     def _create_table(self):
         '''
         Creates table if needed
         '''
         self.cursor.execute('CREATE TABLE IF NOT EXISTS entries (title TEXT, published date, link TEXT, feed TEXT)')
 
+    @method_verbosity
     def write(self, entries, feed_title):
         '''
         Inserts entries info to database.
@@ -44,6 +49,7 @@ class DBHandler:
             self.cursor.executemany("INSERT INTO entries VALUES(?, ?, ?, ?)", entries_to_be_written)
         self.con.commit()
 
+    @method_verbosity
     def read_from_db(self, date_string):
         '''
         Selects rows from table for given date.
