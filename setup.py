@@ -24,7 +24,7 @@ setup(
         "License :: OSI Approved :: BSD License",
     ],
     entry_points = {
-        'console_scripts': ['rss-reader=rss_reader.rss_reader:run'],
+        'console_scripts': ['rss-reader=rss_reader.executor:run'],
     },
     install_requires=required,
 )

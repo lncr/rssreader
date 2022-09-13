@@ -1,10 +1,12 @@
 import feedparser
+import datetime
 import argparse
 import json
 from collections import OrderedDict
 
 from .constants import CURRENT_VERSION
 from .verbosity import method_verbosity, func_verbosity
+from .cache import DBHandler
 
 
 def create_args():
@@ -81,7 +83,8 @@ class FeedGenerator:
         for i in range(self.limit):
             entry = OrderedDict()
             entry['Title'] = entries[i]['title']
-            entry['Date'] = entries[i]['published']
+            dto = datetime.datetime.strptime(entries[i]['published'], '%Y-%m-%dT%H:%M:%SZ')
+            entry['Date'] = dto.date()
             entry['Link'] = entries[i]['link']
             entries_data.append(entry)
 
@@ -96,6 +99,8 @@ class FeedGenerator:
         '''
         raw_data = self.__get_data()
         structured_data = self.__structure_data(raw_data)
+        db_handler = DBHandler()
+        db_handler.write(structured_data['Entries'], structured_data['Feed'])
         return structured_data
 
 
@@ -125,7 +130,12 @@ def run():
         print(f'Version {CURRENT_VERSION}')
 
     else:
-        feed_gen = FeedGenerator(args.source, verbose=args.verbose, limit=args.limit)
-        data = feed_gen.collect_data()
+
+        if args.date:
+            db_handler = DBHandler()
+            data = db_handler.read_from_db(args.date)
+        else:
+            feed_gen = FeedGenerator(args.source, verbose=args.verbose, limit=args.limit)
+            data = feed_gen.collect_data()
 
         print(output_data(data, args.json))
