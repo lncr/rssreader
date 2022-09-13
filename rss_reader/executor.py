@@ -124,6 +124,9 @@ def output_data(data, is_json=False):
 
 
 def run():
+    '''
+    Entrypoint function that connects functioanality of whole project
+    '''
     args = create_args()
 
     if args.version:
