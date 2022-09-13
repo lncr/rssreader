@@ -1,8 +1,6 @@
-import requests
 import feedparser
 import argparse
 import json
-import pprint
 from collections import OrderedDict
 
 from constants import CURRENT_VERSION
