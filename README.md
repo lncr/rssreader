@@ -8,16 +8,16 @@ print out collected data in human readable format.
 
 Usage example:
 
-rss-reader "https://news.yahoo.com/rss/" --limit 1
+    rss-reader "https://news.yahoo.com/rss/" --limit 1
 
 
 Output:
 
-Feed: Yahoo News - Latest News & Headlines 
+    Feed: Yahoo News - Latest News & Headlines 
 
-Title: Woman whose rape DNA led to her arrest sues San Francisco 
-Date: 2022-09-12T20:58:22Z 
-Link: https://news.yahoo.com/woman-whose-rape-dna-led-205822755.html 
+    Title: Woman whose rape DNA led to her arrest sues San Francisco \n
+    Date: 2022-09-12T20:58:22Z \n
+    Link: https://news.yahoo.com/woman-whose-rape-dna-led-205822755.html
 
 
 Optional arguments:
@@ -30,9 +30,11 @@ Optional arguments:
 
 --json           Set output format to JSON. 
 
+--date [DATE]    Show cached entry for given date in %Y%m%d format
+
 Example of JSON output:
 
-{"Feed": "Yahoo News - Latest News & Headlines",
-"Entries": [{"Title": "Woman whose rape DNA led to her arrest sues San Francisco",
-"Date": "2022-09-12T20:58:22Z",
-"Link": "https://news.yahoo.com/woman-whose-rape-dna-led-205822755.html"},]}
+    {"Feed": "Yahoo News - Latest News & Headlines",
+    "Entries": [{"Title": "Woman whose rape DNA led to her arrest sues San Francisco",
+    "Date": "2022-09-12T20:58:22Z",
+    "Link": "https://news.yahoo.com/woman-whose-rape-dna-led-205822755.html"},]}

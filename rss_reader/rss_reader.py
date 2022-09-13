@@ -22,6 +22,7 @@ def create_args():
     parser.add_argument("--verbose", help="Increase output verbosity", action='store_true')
     parser.add_argument("--version", help="Show current version", action='store_true')
     parser.add_argument("--json", help="Set output format to JSON", action='store_true')
+    parser.add_argument("--date", type=str, nargs='?', help="Show cached entry for given date in %Y%m%d format")
 
     args = parser.parse_args()
 
