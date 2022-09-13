@@ -4,12 +4,15 @@ from setuptools import setup
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
-with open('requirements.txt') as f:
-    required = f.read().splitlines()
+try:
+    with open('requirements.txt') as f:
+        required = f.read().splitlines()
+except FileNotFoundError:
+    required = ['feedparser==6.0.10', ]
 
 setup(
     name = "rss-reader-bektur",
-    version = "3.1.1",
+    version = "3.1.3",
     author = "Bektur Soltobaev",
     author_email = "bektur_soltobaev@epam.com",
     description = ("RSS reader for final task in Python educational course"),
