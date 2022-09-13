@@ -4,6 +4,7 @@ rss_reader/__init__.py
 rss_reader/cache.py
 rss_reader/constants.py
 rss_reader/executor.py
+rss_reader/file_generator.py
 rss_reader/verbosity.py
 rss_reader_bektur.egg-info/PKG-INFO
 rss_reader_bektur.egg-info/SOURCES.txt

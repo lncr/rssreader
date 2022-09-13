@@ -25,7 +25,7 @@ Output:
 
 Optional arguments:
 
---limit  Set the maximum amount of output messages
+--limit          Set the maximum amount of output messages
 
 --verbose        Increase output verbosity
 
@@ -34,6 +34,11 @@ Optional arguments:
 --json           Set output format to JSON. 
 
 --date           Show cached entry for given date in %Y%m%d format
+
+--to-html        Receives path where HTML file should be created and writes results in it
+
+--to-pdf         Receives path where PDF file should be created and writes results in it
+
 
 Example of JSON output:
 

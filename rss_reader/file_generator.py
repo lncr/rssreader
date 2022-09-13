@@ -1,18 +1,21 @@
 from fpdf import FPDF
+from verbosity import method_verbosity
 
 
 class FileGenerator:
     '''
     Class for handling file generation from given path
     '''
-    def __init__(self, pdf_path, html_path, data):
+    def __init__(self, pdf_path, html_path, data, verbose):
         if all([pdf_path, html_path]):
             raise AttributeError('You need to specify only 1 file path')
         
         self.pdf_path = pdf_path
         self.html_path = html_path
         self.data = data
+        self.verbose = verbose
 
+    @method_verbosity
     def write_html(self):
         '''
         Method for generating html file
@@ -29,6 +32,7 @@ class FileGenerator:
                 '''
             f.write(result)
 
+    @method_verbosity
     def write_pdf(self):
         '''
         Method for generating pdf file
@@ -51,6 +55,7 @@ class FileGenerator:
 
         pdf.output(self.pdf_path)
 
+    @method_verbosity
     def generate(self):
         '''
         Client interface method that controls format of generated file

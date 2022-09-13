@@ -12,7 +12,7 @@ except FileNotFoundError:
 
 setup(
     name = "rss-reader-bektur",
-    version = "4.1.2",
+    version = "4.1.3",
     author = "Bektur Soltobaev",
     author_email = "bektur_soltobaev@epam.com",
     description = ("RSS reader for final task in Python educational course"),

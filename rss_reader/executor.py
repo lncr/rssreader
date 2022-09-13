@@ -147,7 +147,9 @@ def run():
             data = feed_gen.collect_data()
 
         if any([args.to_html, args.to_pdf]):
-            file_generator = FileGenerator(args.to_pdf, args.to_html, data)
+            file_generator = FileGenerator(args.to_pdf, args.to_html, data, args.verbose)
             file_generator.generate()
+            if args.json:
+                print(output_data(data, args.json))
         else:
             print(output_data(data, args.json))
