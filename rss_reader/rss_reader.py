@@ -1,12 +1,10 @@
-import requests
 import feedparser
 import argparse
 import json
-import pprint
 from collections import OrderedDict
 
-from constants import CURRENT_VERSION
-from verbosity import method_verbosity, func_verbosity
+from .constants import CURRENT_VERSION
+from .verbosity import method_verbosity, func_verbosity
 
 
 def create_args():
@@ -119,11 +117,11 @@ def output_data(data, is_json=False):
     return print_data
 
 
-if __name__ == '__main__':
+def run():
     args = create_args()
 
     if args.version:
-        print(CURRENT_VERSION)
+        print(f'Version {CURRENT_VERSION}')
 
     else:
         feed_gen = FeedGenerator(args.source, verbose=args.verbose, limit=args.limit)
